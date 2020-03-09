@@ -40,6 +40,7 @@ ps aux | grep openvas
 
 #Make sure https://
 https://localhost:4000
+or
 your-server-ip:4000
 
 #The default login ID and Password is "admin"
