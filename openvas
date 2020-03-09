@@ -1,0 +1,45 @@
+ 
+#!/bash/sh
+
+#Video Tutorial
+
+
+#check system packages are up to data 
+sudo apt-get update && upgrade 
+
+#add the ppa repository
+sudo add-apt-repository ppa:mrazavi/openvas
+
+#install the required packages
+sudo apt install sqlite3
+sudo apt install openvas9
+sudo apt install texlive-latex-extra --no-install-recommends
+sudo apt install texlive-fonts-recommended
+sudo apt install libopenvas9-dev
+
+#update the network vulnerability tests database
+sudo greenbone-nvt-sync
+sudo greenbone-scapdata-sync
+sudo greenbone-certdata-sync
+
+#restart the OpenVAS scanner, manager, gsa
+sudo systemctl restart openvas-scanner
+sudo systemctl restart openvas-manager
+sudo systemctl restart openvas-gsa
+
+#enable the services, manager, gsa
+sudo systemctl enable openvas-scanner
+sudo systemctl enable openvas-manager
+sudo systemctl enable openvas-gsa
+
+#check openvas processes status
+ps aux | grep openvas
+
+#Open browser 
+#Note: Don't use: localhost:4000
+
+#Make sure https://
+https://localhost:4000
+your-server-ip:4000
+
+#The default login ID and Password is "admin"
